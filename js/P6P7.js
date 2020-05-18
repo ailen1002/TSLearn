@@ -1,18 +1,5 @@
 "use strict";
 //1、ts中类的定义
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 /*
 es5中定义类：
     function Person(name) {
@@ -314,40 +301,40 @@ ts中定义类：
 //用abstract关键字定义抽象类和抽象方法，抽象类中的抽象方法不包含具体实现并且必须在派生类中实现。
 //abstract抽象方法只能放在抽象类里面
 //抽象类和抽象方法用来定义标准 ， 标准：Animal这个类要求它的子类必须包含eat方法
-var Animal = /** @class */ (function () {
-    function Animal(name) {
-        this.name = name;
+/*
+    abstract class Animal {
+        public name:string;
+        constructor(name:string) {
+            this.name = name;
+        }
+        abstract eat():any; //抽象方法在子类里面必须实现  不包含具体实现  必须在派生类里面实现
+        run() {
+            console.log('其他方法可以不实现')
+        }
     }
-    Animal.prototype.run = function () {
-        console.log('其他方法可以不实现');
-    };
-    return Animal;
-}());
-// var a = new Animal() /*错误写法*/
-var Dog = /** @class */ (function (_super) {
-    __extends(Dog, _super);
-    //抽象类的子类必须实现抽象类里面的方法
-    function Dog(name) {
-        return _super.call(this, name) || this;
+    // var a = new Animal() //错误写法
+    class Dog extends Animal {
+        //抽象类的子类必须实现抽象类里面的方法
+        constructor(name:any) {
+            super(name)
+        }
+        eat() {
+            console.log(`${this.name}吃骨头`)
+        }
     }
-    Dog.prototype.eat = function () {
-        console.log(this.name + "\u5403\u9AA8\u5934");
-    };
-    return Dog;
-}(Animal));
-var d = new Dog('小花花');
-d.eat();
-var Cat = /** @class */ (function (_super) {
-    __extends(Cat, _super);
-    function Cat(name) {
-        return _super.call(this, name) || this;
+    var d = new Dog('小花花');
+    d.eat();
+    class Cat extends Animal {
+        constructor(name:any) {
+            super(name)
+        }
+        run() {
+
+        }
+        eat() {
+            console.log(`${this.name}吃小鱼`)
+        }
     }
-    Cat.prototype.run = function () {
-    };
-    Cat.prototype.eat = function () {
-        console.log(this.name + "\u5403\u5C0F\u9C7C");
-    };
-    return Cat;
-}(Animal));
-var c = new Cat('小花猫');
-c.eat();
+    var c = new Cat('小花猫');
+    c.eat();
+*/ 

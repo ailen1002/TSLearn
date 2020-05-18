@@ -133,6 +133,6 @@ function css(config,value) {
 // setTimeout(function() {
 //     alert('run')
 // },1000)
-setTimeout(function () {
-    alert('run');
-}, 1000);
+// setTimeout(() => {
+//     alert('run')
+// },1000)

@@ -348,38 +348,40 @@ ts中定义类：
 //abstract抽象方法只能放在抽象类里面
 //抽象类和抽象方法用来定义标准 ， 标准：Animal这个类要求它的子类必须包含eat方法
 
-abstract class Animal {
-    public name:string;
-    constructor(name:string) {
-        this.name = name;
+/*
+    abstract class Animal {
+        public name:string;
+        constructor(name:string) {
+            this.name = name;
+        }
+        abstract eat():any; //抽象方法在子类里面必须实现  不包含具体实现  必须在派生类里面实现
+        run() {
+            console.log('其他方法可以不实现')
+        }
     }
-    abstract eat():any; //抽象方法在子类里面必须实现  不包含具体实现  必须在派生类里面实现
-    run() {
-        console.log('其他方法可以不实现')
+    // var a = new Animal() //错误写法
+    class Dog extends Animal {
+        //抽象类的子类必须实现抽象类里面的方法
+        constructor(name:any) {
+            super(name)
+        }
+        eat() {
+            console.log(`${this.name}吃骨头`)
+        }
     }
-}
-// var a = new Animal() /*错误写法*/
-class Dog extends Animal {
-    //抽象类的子类必须实现抽象类里面的方法
-    constructor(name:any) {
-        super(name)
-    }
-    eat() {
-        console.log(`${this.name}吃骨头`)
-    }
-}
-var d = new Dog('小花花');
-d.eat();
-class Cat extends Animal {
-    constructor(name:any) {
-        super(name)
-    }
-    run() {
+    var d = new Dog('小花花');
+    d.eat();
+    class Cat extends Animal {
+        constructor(name:any) {
+            super(name)
+        }
+        run() {
 
+        }
+        eat() {
+            console.log(`${this.name}吃小鱼`)
+        }
     }
-    eat() {
-        console.log(`${this.name}吃小鱼`)
-    }
-}
-var c = new Cat('小花猫');
-c.eat();
+    var c = new Cat('小花猫');
+    c.eat();
+*/

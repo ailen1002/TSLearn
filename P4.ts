@@ -174,9 +174,9 @@
     // },1000)
 
 
-    setTimeout(() => {
-        alert('run')
-    },1000)
+    // setTimeout(() => {
+    //     alert('run')
+    // },1000)
 
 
 
