@@ -7,66 +7,70 @@
         1、接口：在面向对象编程中，接口是一种规范的定义，它定义了行为和动作的规范
         2、泛型  通俗理解：泛型就是解决 类 接口 方法的复用性
 */
-//定义一个操作mysql数据库的类
-var MysqlDb = /** @class */ (function () {
-    function MysqlDb() {
-        console.log('数据库建立链接');
-    }
-    MysqlDb.prototype.add = function (info) {
-        console.log(info);
-        return true;
-    };
-    MysqlDb.prototype.updated = function (info, id) {
-        throw new Error("Method not implemented.");
-    };
-    MysqlDb.prototype.delete = function (id) {
-        throw new Error("Method not implemented.");
-    };
-    MysqlDb.prototype.get = function (id) {
-        var list = [
-            {
-                title: 'mmm',
-                desc: '123'
-            },
-            {
-                title: 'nnn',
-                desc: '456'
-            }
-        ];
-        return list;
-    };
-    return MysqlDb;
-}());
-//
-var MssqlDb = /** @class */ (function () {
-    function MssqlDb() {
-        console.log('数据库建立链接');
-    }
-    MssqlDb.prototype.add = function (info) {
-        console.log(info);
-        return true;
-    };
-    MssqlDb.prototype.updated = function (info, id) {
-        throw new Error("Method not implemented.");
-    };
-    MssqlDb.prototype.delete = function (id) {
-        throw new Error("Method not implemented.");
-    };
-    MssqlDb.prototype.get = function (id) {
-        var list = [
-            {
-                title: 'xxx',
-                desc: '123'
-            },
-            {
-                title: 'sss',
-                desc: '456'
-            }
-        ];
-        return list;
-    };
-    return MssqlDb;
-}());
+// interface DBI<T>{
+//     add(info:T):boolean;
+//     updated(info:T,id:number):boolean;
+//     delete(id:number):boolean;
+//     get(id:number):any[];
+// }
+// //定义一个操作mysql数据库的类
+// class MysqlDb<T> implements DBI<T> {
+//     constructor() {
+//         console.log('数据库建立链接')
+//     }
+//     add(info: T): boolean {
+//         console.log(info)
+//         return true
+//     }
+//     updated(info: T, id: number): boolean {
+//         throw new Error("Method not implemented.");
+//     }
+//     delete(id: number): boolean {
+//         throw new Error("Method not implemented.");
+//     }
+//     get(id: number): any[] {
+//         var list = [
+//             {
+//                 title:'mmm',
+//                 desc:'123'
+//             },
+//             {
+//                 title:'nnn',
+//                 desc:'456'
+//             }
+//         ]
+//         return list
+//     }
+// }
+// //定义一个操作Mssql数据库的类
+// class MssqlDb<T> implements DBI<T> {
+//     constructor() {
+//         console.log('数据库建立链接')
+//     }
+//     add(info: T): boolean {
+//         console.log(info)
+//         return true
+//     }
+//     updated(info: T, id: number): boolean {
+//         throw new Error("Method not implemented.");
+//     }
+//     delete(id: number): boolean {
+//         throw new Error("Method not implemented.");
+//     }
+//     get(id: number): any[] {
+//         var list = [
+//             {
+//                 title:'xxx',
+//                 desc:'123'
+//             },
+//             {
+//                 title:'sss',
+//                 desc:'456'
+//             }
+//         ]
+//         return list
+//     }   
+// }
 //操作用户表  定义一个User类和数据表做映射
 /*
     class User {
@@ -79,15 +83,14 @@ var MssqlDb = /** @class */ (function () {
     var oMysql = new MysqlDb<User>();  //类作为参数来约束传入的类型
     oMysql.add(u);
 */
-var User = /** @class */ (function () {
-    function User() {
-    }
-    return User;
-}());
-var u = new User();
-u.username = '李四';
-u.password = '123456';
-var oMssql = new MssqlDb(); //类作为参数来约束传入的类型
-oMssql.add(u);
-var data = oMssql.get(4); //获取User表 ID=4的数据
-console.log(data);
+// class User {
+//     username:string | undefined;
+//     password:string | undefined;
+// }
+// var u = new User();
+// u.username = '李四';
+// u.password = '123456';
+// var oMssql = new MssqlDb<User>();  //类作为参数来约束传入的类型
+// oMssql.add(u);
+// var data = oMssql.get(4);  //获取User表 ID=4的数据
+// console.log(data);
